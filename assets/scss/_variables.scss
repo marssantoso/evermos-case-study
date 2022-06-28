@@ -1,0 +1,19 @@
+$color-primary: #0a5f8e;
+
+$color-neutral-10: #fff;
+$color-neutral-20: #ebf0f4;
+$color-neutral-30: #e4e9ec;
+$color-neutral-40: #d8dce0;
+$color-neutral-50: #babec1;
+$color-neutral-60: #989b9e;
+$color-neutral-70: #717375;
+$color-neutral-80: #5d5f61;
+$color-neutral-90: #3d3f40;
+$color-neutral-100: #131414;
+
+$gradient-primary: linear-gradient(
+  360deg,
+  $color-primary 0%,
+  $color-neutral-10 397.73%
+);
+$shadow-primary: 0 8px 16px rgba($color-primary, 0.15);
