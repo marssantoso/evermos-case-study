@@ -1,5 +1,5 @@
 <template>
-  <o-tutorial />
+  <h1>Lorem Ipsum</h1>
 </template>
 
 <script lang="ts">
