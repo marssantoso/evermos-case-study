@@ -21,15 +21,20 @@ export default Vue.extend({
   width: 240px;
   flex-shrink: 0;
   background-color: $color-neutral-2;
-  min-height: calc(100vh - $height-navbar - $height-footer - (2 * $space-1));
+  min-height: calc(
+    100vh - $height-navbar - $height-footer - $height-breadcrumb -
+      (4 * $space-1)
+  );
   opacity: 0.95;
-  @include screen-small {
+  position: sticky;
+  top: calc($height-navbar + $space-1);
+  align-self: flex-start;
+  @include screen-tablet {
     position: fixed;
     top: 0;
-    left: 0;
     bottom: 0;
     transform: translateX(-100%);
-    width: calc(100vw - 4rem);
+    max-width: calc(100vw - 2rem);
     transition: transform 200ms ease-in-out;
     &--open {
       transform: translateX(0);

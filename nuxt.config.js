@@ -50,6 +50,9 @@ export default {
     apiURL: process.env.API_URL || 'http://localhost:8000',
   },
 
+  // Server Middleware: https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+  serverMiddleware: [{ path: '/api', handler: '~/server/api' }],
+
   // Style Resources
   styleResources: {
     scss: ['./assets/scss/_variables.scss', './assets/scss/_mixins.scss'],
@@ -64,7 +67,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.API_URL || 'http://localhost:3000',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

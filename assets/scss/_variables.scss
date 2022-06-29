@@ -43,8 +43,12 @@ $space-1: 1rem;
 
 /* SIZES */
 // width
-$width-container: 1024px;
+$width-tablet: 1024px;
+$width-mobile: 640px;
+$width-container: $width-tablet;
 $width-sidebar: 240px;
+$width-gallery: 480px;
+$width-product-card: 172px;
 
 // height
 $height-navbar: 60px;

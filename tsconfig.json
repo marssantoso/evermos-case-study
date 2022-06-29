@@ -13,7 +13,9 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "faker/*": ["@faker-js/faker/*"],
+      "faker": ["@faker-js/faker"]
     },
     "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "jest"]
   },
