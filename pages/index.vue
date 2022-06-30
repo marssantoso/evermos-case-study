@@ -11,8 +11,8 @@ import { mapState } from 'vuex'
 
 export default Vue.extend({
   name: 'PageIndex',
-  async fetch({ store, query }) {
-    await store.dispatch('GET_PRODUCTS', query)
+  async fetch({ store }) {
+    await store.dispatch('GET_PRODUCTS', { limit: 8 })
   },
   computed: {
     ...mapState(['products']),

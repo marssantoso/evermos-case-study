@@ -5,6 +5,8 @@ export interface Product {
   price: number
   images: string[]
   rating: string
+  category: string
+  location: string
 }
 
 export interface Meta {
@@ -14,10 +16,35 @@ export interface Meta {
   totalPage: number
 }
 
+export interface MinMax {
+  min: number
+  max: number
+}
+
+export interface Facets {
+  category: string[]
+  location: string[]
+  rating: MinMax
+  price: MinMax
+}
+
 export interface RootState {
   isLoading: boolean
   isSidebarOpen: boolean
   products: Product[]
-  product: Product | null
+  product?: Product | null
   meta?: Meta | null
+  facets?: Facets | null
+}
+
+export interface Option {
+  name: string
+  value: any
+}
+
+export interface Filter {
+  category: string[]
+  location: string[]
+  minPrice: number
+  maxPrice: number
 }

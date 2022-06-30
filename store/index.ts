@@ -1,5 +1,5 @@
 import { ActionTree, MutationTree, GetterTree } from 'vuex'
-import { Product, Meta, RootState } from '~/utils/types'
+import { Product, Meta, RootState, Facets } from '~/utils/types'
 
 export const state = (): RootState => ({
   isLoading: false,
@@ -7,6 +7,7 @@ export const state = (): RootState => ({
   products: [],
   product: null,
   meta: null,
+  facets: null,
 })
 
 export const getters: GetterTree<RootState, RootState> = {}
@@ -31,16 +32,17 @@ export const mutations: MutationTree<RootState> = {
   SET_META(state: RootState, payload: Meta) {
     state.meta = payload
   },
+  SET_FACETS(state: RootState, payload: Facets) {
+    state.facets = payload
+  },
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-  async GET_PRODUCTS({ commit }, { keyword = '' }) {
+  async GET_PRODUCTS({ commit }, query) {
     commit('SET_LOADING', true)
     try {
-      const qs = new URLSearchParams({ keyword, limit: '60' }).toString()
-      const { data } = await this.$axios.get(
-        `/api/products${qs ? '?' : ''}${qs}`
-      )
+      const qs = new URLSearchParams(query).toString()
+      const { data } = await this.$axios.get(`/api/products${qs ? '?' : ''}${qs}`)
       commit('SET_PRODUCTS', data.data)
       commit('SET_META', data.meta)
     } catch (error) {
@@ -54,6 +56,17 @@ export const actions: ActionTree<RootState, RootState> = {
     try {
       const { data } = await this.$axios.get(`/api/products/${slug}`)
       commit('SET_PRODUCT', data.data)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      commit('SET_LOADING', false)
+    }
+  },
+  async GET_FACETS({ commit }, keyword = '') {
+    commit('SET_LOADING', true)
+    try {
+      const { data } = await this.$axios.get(`/api/facets${keyword ? '?keyword=' : ''}${keyword}`)
+      commit('SET_FACETS', data.data)
     } catch (error) {
       console.error(error)
     } finally {

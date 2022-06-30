@@ -1,6 +1,6 @@
 <template>
   <aside :class="['m-sidebar', { 'm-sidebar--open': isSidebarOpen }]">
-    <p>Sidebar</p>
+    <m-filter />
   </aside>
 </template>
 
@@ -18,13 +18,10 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .m-sidebar {
-  width: 240px;
+  width: $width-sidebar;
   flex-shrink: 0;
-  background-color: $color-neutral-2;
-  min-height: calc(
-    100vh - $height-navbar - $height-footer - $height-breadcrumb -
-      (4 * $space-1)
-  );
+  background-color: $color-light;
+  min-height: calc(100vh - $height-navbar - $height-footer - $height-breadcrumb - (4 * $space-1));
   opacity: 0.95;
   position: sticky;
   top: calc($height-navbar + $space-1);
@@ -36,6 +33,10 @@ export default Vue.extend({
     transform: translateX(-100%);
     max-width: calc(100vw - 2rem);
     transition: transform 200ms ease-in-out;
+    padding: $space-1;
+    height: 100vh;
+    overflow-y: scroll;
+    box-sizing: border-box;
     &--open {
       transform: translateX(0);
       z-index: 2;

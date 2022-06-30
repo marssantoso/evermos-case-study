@@ -1,10 +1,6 @@
 <template>
   <div :class="`o-product-grid o-product-grid--${view}`">
-    <m-product-card
-      v-for="product in products"
-      :key="product.slug"
-      :product="product"
-    />
+    <m-product-card v-for="product in products" :key="product.slug" :product="product" />
   </div>
 </template>
 
@@ -30,7 +26,13 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .o-product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($width-product-card, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: $space-1;
+  @include screen-tablet {
+    padding: 0 $space-1;
+  }
+  @include screen-mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>

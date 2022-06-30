@@ -23,8 +23,7 @@ const typeMapper = TYPES.reduce((a, c) => ({ ...a, [typePrefixer(c)]: c }), {})
 
 const typeFormatter = (type) => typeMapper[typePrefixer(type)]
 
-const nameFormatter = (type, name) =>
-  `${typePrefixer(type)}${namePascalize(name)}`
+const nameFormatter = (type, name) => `${typePrefixer(type)}${namePascalize(name)}`
 
 const componentFormatter = (type, name) => {
   if (/\s/.test(name)) name = name.split(' ').join('-')
@@ -36,8 +35,7 @@ const storyFormatter = (type, name) => `${type}/${namePascalize(name)}`
 // PROMPTER HELPER
 
 const getParams = (args) => {
-  if (!Object.keys(typeMapper).includes(typePrefixer(args.type)))
-    throw new Error('Type invalid')
+  if (!Object.keys(typeMapper).includes(typePrefixer(args.type))) throw new Error('Type invalid')
 
   const type = typeFormatter(args.type)
   const name = nameFormatter(args.type, args.name)
@@ -55,17 +53,12 @@ module.exports = {
   prompt: ({ prompter, args }) => {
     if (!args.type) {
       return prompter.prompt(getPrompt('type')).then(({ type }) => {
-        if (!args.name)
-          return prompter
-            .prompt(getPrompt('name'))
-            .then(({ name }) => getParams({ type, name }))
+        if (!args.name) return prompter.prompt(getPrompt('name')).then(({ name }) => getParams({ type, name }))
         return getParams({ ...args, type })
       })
     }
     if (!args.name) {
-      return prompter
-        .prompt(getPrompt('name'))
-        .then(({ name }) => getParams({ ...args, name }))
+      return prompter.prompt(getPrompt('name')).then(({ name }) => getParams({ ...args, name }))
     }
     return getParams(args)
   },

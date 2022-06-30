@@ -48,9 +48,19 @@ $width-mobile: 640px;
 $width-container: $width-tablet;
 $width-sidebar: 240px;
 $width-gallery: 480px;
-$width-product-card: 172px;
+$width-product-card: 150px;
 
 // height
 $height-navbar: 60px;
 $height-footer: 60px;
 $height-breadcrumb: 60px;
+
+// border-radius
+$radius-1: 4px;
+$radius-2: 8px;
+$radius-full: 9999px;
+
+// shadow
+$shadow-light: 0 2px 4px 0 rgba($color-dark, 0.05);
+$shadow-float: 0 4px 8px 0 rgba($color-dark, 0.15);
+$shadow-glow: 0 4px 8px 0 rgba($color-blue-3, 0.5);
