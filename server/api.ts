@@ -57,7 +57,7 @@ const getProducts = (): Product[] => {
 }
 
 app.get('/products', (req, res) => {
-  let { keyword = '', page = 1, limit = 50 } = req.query
+  let { keyword = '', page = 1, limit = 20 } = req.query
   const { sort, category = '', location = '', minPrice, maxPrice } = req.query
   keyword = (keyword as string).toLowerCase()
   page = parseInt(page as string)
