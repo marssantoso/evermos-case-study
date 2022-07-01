@@ -36,7 +36,7 @@ export default Vue.extend({
   backdrop-filter: blur(4px);
   transition: opacity 1000ms ease-in-out;
   @include inset;
-  z-index: 1;
+  z-index: 2;
   &::before {
     content: '';
     position: absolute;

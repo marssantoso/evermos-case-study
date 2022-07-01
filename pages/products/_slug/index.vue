@@ -38,6 +38,9 @@ export default Vue.extend({
       return false
     }
   },
+  async asyncData({ store }) {
+    await store.dispatch('GET_SUGGESTED_KEYWORDS')
+  },
   computed: {
     ...mapState(['product']),
     price(): string {

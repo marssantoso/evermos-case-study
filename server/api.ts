@@ -2,7 +2,7 @@ import express, { json, urlencoded } from 'express'
 import NodeCache from 'node-cache'
 import { faker } from '@faker-js/faker'
 
-import { getProductImage, getUnique, filterByKeyword, sortByAlpha, filterByField, filterByPrice } from './utils/helpers'
+import { getProductImage, getUnique, filterByKeyword, sortByAlpha, filterByField, filterByPrice, sortByFloat } from './utils/helpers'
 import { Filter, Product } from '~/utils/types'
 const province = require('./json/province.json')
 
@@ -87,7 +87,7 @@ app.get('/products', (req, res) => {
 
   // sort
   if (sort && sort === 'rating') {
-    products = products.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+    products = sortByFloat(products)
   } else if (sort && sort === 'price') {
     products = products.sort((a, b) => b.price - a.price)
   } else if (sort && sort === '-price') {
@@ -129,6 +129,11 @@ app.get('/facets', (req, res) => {
 
   const data = { category, price, rating, location }
   return res.status(200).json({ status: 'success', data })
+})
+
+app.get('/keywords', (_, res) => {
+  const keywords = getUnique(sortByFloat(getProducts()).map(({ name }) => name.split(' ').pop()?.toLowerCase() ?? '')).slice(0, 5)
+  return res.status(200).json({ status: 'success', data: keywords })
 })
 
 app.get('/', (_req, res) => res.status(404).json({ status: 'error', message: 'Not Found' }))

@@ -17,7 +17,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .layout {
   max-width: $width-container;
-  padding-top: calc($height-navbar + $space-1);
+  padding-top: $height-navbar;
   margin: 0 auto;
 }
 </style>

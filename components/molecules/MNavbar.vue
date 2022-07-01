@@ -6,7 +6,7 @@
         <span>Home</span>
       </nuxt-link>
       <form class="m-navbar__search" @submit.prevent="handleSearch">
-        <input v-model="keyword" type="search" placeholder="search" class="m-navbar__input" />
+        <a-input v-model="keyword" :placeholder="`Search for ${currentSuggestedKeyword}`" is-block />
       </form>
     </div>
   </header>
@@ -14,6 +14,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   name: 'MNavbar',
@@ -21,6 +22,9 @@ export default Vue.extend({
     return {
       keyword: this.$route.query.keyword ?? '',
     }
+  },
+  computed: {
+    ...mapGetters(['currentSuggestedKeyword']),
   },
   watch: {
     '$route.query'(value) {
@@ -31,7 +35,7 @@ export default Vue.extend({
   },
   methods: {
     handleSearch() {
-      const query = this.keyword ? { keyword: this.keyword } : {}
+      const query = { keyword: this.keyword ? this.keyword : this.currentSuggestedKeyword }
       this.$router.push({ name: 'products', query })
     },
   },
@@ -47,7 +51,7 @@ export default Vue.extend({
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   box-shadow: $shadow-float;
   &__container {
     height: 100%;
@@ -63,27 +67,19 @@ export default Vue.extend({
     text-decoration: none;
     display: flex;
     align-items: flex-end;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
     gap: 4px;
     @include screen-desktop {
       width: $width-sidebar;
     }
   }
   &__logo {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
   }
   &__search {
     flex: 1;
-    width: 100%;
-  }
-  &__input {
-    border: unset;
-    background-color: white;
-    box-shadow: $shadow-light;
-    padding: 12px;
-    border-radius: $radius-1;
-    box-sizing: border-box;
     width: 100%;
   }
 }

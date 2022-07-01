@@ -1,7 +1,7 @@
 import { Filter, Product } from '~/utils/types'
 
 export const getProductImage = (keyword: string, key: number) => {
-  return `https://loremflickr.com/640/480/${keyword}?lock=${key}`
+  return `https://loremflickr.com/480/480/${keyword}?lock=${key}`
 }
 
 export const getUnique = (array: string[]) => {
@@ -22,4 +22,8 @@ export const filterByField = (products: Product[], filter: Record<string, any>, 
 
 export const sortByAlpha = (array: string[]) => {
   return array.sort((a, b) => a.localeCompare(b))
+}
+
+export const sortByFloat = (products: Product[]) => {
+  return products.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
 }

@@ -35,6 +35,8 @@ export interface RootState {
   product?: Product | null
   meta?: Meta | null
   facets?: Facets | null
+  keywords: string[]
+  currentKeywordIndex: number
 }
 
 export interface Option {

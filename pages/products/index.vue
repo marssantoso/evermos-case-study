@@ -32,6 +32,7 @@ export default Vue.extend({
   async asyncData({ store, query }) {
     await store.dispatch('GET_PRODUCTS', query)
     await store.dispatch('GET_FACETS', query.keyword)
+    await store.dispatch('GET_SUGGESTED_KEYWORDS')
   },
   data(): Data {
     return {

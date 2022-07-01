@@ -39,7 +39,7 @@ export default Vue.extend({
     box-sizing: border-box;
     &--open {
       transform: translateX(0);
-      z-index: 2;
+      z-index: 3;
     }
   }
 }
