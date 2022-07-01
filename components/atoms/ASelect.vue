@@ -53,12 +53,13 @@ export default Vue.extend({
     border-radius: $radius-1;
     background-color: white;
     box-shadow: $shadow-light;
-    padding: 8px 24px 8px 4px;
+    padding: 8px 24px 8px 12px;
     appearance: none;
     background-image: url('~assets/images/icon-chevron-down.svg');
     background-repeat: no-repeat;
     background-position-x: calc(100% - 4px);
     background-size: 1rem 100%;
+    color: $color-dark;
   }
 }
 </style>

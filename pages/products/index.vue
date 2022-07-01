@@ -11,7 +11,7 @@
       <m-pagination />
     </div>
     <div class="page__fab">
-      <button class="page__button" @click="toggleSidebar(true)">Filter</button>
+      <a-button variant="white" is-rounded @click="toggleSidebar(true)">Filter</a-button>
     </div>
   </div>
 </template>
@@ -90,6 +90,9 @@ export default Vue.extend({
     margin: 0 auto;
     width: 100px;
     z-index: 1;
+    @include screen-desktop {
+      display: none;
+    }
   }
   &__panel {
     margin-bottom: $space-1;
@@ -103,19 +106,6 @@ export default Vue.extend({
     margin-bottom: $space-1;
     @include screen-tablet {
       padding: 0 $space-1;
-    }
-  }
-  &__button {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: $radius-full;
-    background-color: white;
-    box-shadow: $shadow-float;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    @include screen-desktop {
-      display: none;
     }
   }
 }

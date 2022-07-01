@@ -98,6 +98,7 @@ export default Vue.extend({
     letter-spacing: 0.25px;
     color: $color-neutral-5;
     height: 2rem;
+    line-height: 1rem;
     @include truncate(2);
   }
   &__description {

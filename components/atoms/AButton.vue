@@ -1,5 +1,5 @@
 <template>
-  <button :class="['a-button', { 'a-button--block': isBlock }]" :disabled="isDisabled" @click="$emit('click')">
+  <button :class="classes" :disabled="isDisabled" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -17,6 +17,20 @@ export default Vue.extend({
     isBlock: {
       type: Boolean,
       default: false,
+    },
+    isRounded: {
+      type: Boolean,
+      default: false,
+    },
+    variant: {
+      type: String,
+      validator: (v) => ['primary', 'white'].includes(v),
+      default: 'primary',
+    },
+  },
+  computed: {
+    classes() {
+      return ['a-button', `a-button--${this.variant}`, { 'a-button--block': this.isBlock, 'a-button--rounded': this.isRounded }]
     },
   },
 })
@@ -48,6 +62,22 @@ export default Vue.extend({
   }
   &--block {
     width: 100%;
+  }
+  &--rounded {
+    border-radius: $radius-full;
+    padding: 0.5rem $space-2;
+  }
+  &--white {
+    background-color: white;
+    border-color: $color-blue-2;
+    color: $color-blue-6;
+    &:hover {
+      background-color: $color-neutral-1;
+    }
+    &:active {
+      background-color: $color-neutral-2;
+      color: $color-blue-5;
+    }
   }
 }
 </style>
