@@ -49,7 +49,14 @@ export default {
 
   // Runtime Configs: https://nuxtjs.org/docs/configuration-glossary/configuration-runtime-config/
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:8000',
+    axios: {
+      browserBaseURL: process.env.API_URL,
+    },
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_URL,
+    },
   },
 
   // Server Middleware: https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/

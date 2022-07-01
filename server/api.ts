@@ -1,4 +1,5 @@
 import express, { json, urlencoded } from 'express'
+import cors from 'cors'
 import NodeCache from 'node-cache'
 import { faker } from '@faker-js/faker'
 
@@ -10,6 +11,7 @@ const app = express()
 const cache = new NodeCache({ stdTTL: 600, checkperiod: 120 })
 const CACHE_KEY = 'keyword'
 
+app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
