@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'evermos-test',
+    title: 'Search for countless amazing products – Nuxt Storefront',
     htmlAttrs: {
       lang: 'en',
     },
@@ -53,7 +53,7 @@ export default {
   },
 
   // Server Middleware: https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
-  serverMiddleware: [{ path: '/api', handler: '~/server/api' }],
+  serverMiddleware: [{ path: '/api', handler: '~/server/api.ts' }],
 
   // Style Resources
   styleResources: {
