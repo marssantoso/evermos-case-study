@@ -9,12 +9,7 @@
         <div v-if="!isHovered" key="m-product-card__front" class="m-product-card__front">
           <p class="m-product-card__name">{{ product.name }}</p>
           <p class="m-product-card__price">{{ price }}</p>
-          <div v-if="product.sold" class="m-product-card__stats">
-            <img src="~/assets/images/icon-star.svg" alt="icon star" class="m-product-card__icon" />
-            <span>{{ product.rating }}</span>
-            <span> | </span>
-            <span>Sold {{ product.sold }}</span>
-          </div>
+          <a-stats v-if="product.sold" :product="product" />
         </div>
         <div v-else key="m-product-card__back" class="m-product-card__back">
           <p class="m-product-card__description">{{ product.description }}</p>
@@ -72,26 +67,17 @@ export default Vue.extend({
     box-shadow: $shadow-float;
   }
   &__thumbnail {
-    width: 100%;
     background-color: $color-neutral-2;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    &::after {
-      content: '';
-      display: block;
-      padding-bottom: 100%;
-    }
+    @include responsive-image;
   }
   &__image {
-    position: absolute;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
     &--empty {
-      height: 3rem;
-      widows: 3rem;
+      height: 3rem !important;
+      width: 3rem !important;
+      opacity: 0.5;
     }
   }
   &__content {
@@ -124,21 +110,6 @@ export default Vue.extend({
   }
   &__price {
     font-weight: bold;
-  }
-  &__stats {
-    display: flex;
-    align-items: center;
-    font-size: 0.75rem;
-    gap: 4px;
-    color: $color-neutral-5;
-  }
-  &__icon {
-    display: inline;
-    width: 1rem;
-    height: 1rem;
-    svg path {
-      color: $color-yellow-1;
-    }
   }
   &__transition {
     &-enter-active {

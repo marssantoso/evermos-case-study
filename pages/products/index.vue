@@ -85,7 +85,7 @@ export default Vue.extend({
     position: fixed;
     left: 0;
     right: 0;
-    bottom: calc($height-footer + calc(2 * $space-1));
+    bottom: calc($height-footer + $space-1);
     margin: 0 auto;
     width: 100px;
     z-index: 1;

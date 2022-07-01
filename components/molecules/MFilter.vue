@@ -27,7 +27,7 @@
       </div>
     </section>
     <footer class="m-filter__section">
-      <button class="m-filter__button" :disabled="isDisableReset" @click="handleReset">Reset Filter</button>
+      <a-button :is-disabled="isDisableReset" is-block @click="handleReset">Reset Filter</a-button>
     </footer>
   </div>
 </template>
@@ -142,23 +142,6 @@ export default Vue.extend({
   &__range {
     font-size: 0.875rem;
     text-align: center;
-  }
-  &__button {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-    border: 1px solid $color-blue-2;
-    border-radius: $radius-2;
-    background-color: $color-blue-3;
-    color: $color-blue-6;
-    box-shadow: $shadow-glow;
-    cursor: pointer;
-    &:disabled {
-      border-color: $color-neutral-2;
-      background-color: $color-neutral-3;
-      color: $color-neutral-4;
-      box-shadow: unset;
-    }
   }
 }
 </style>

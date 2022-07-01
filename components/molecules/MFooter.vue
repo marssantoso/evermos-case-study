@@ -1,6 +1,6 @@
 <template>
   <footer class="m-footer">
-    <p>&copy; {{ year }}</p>
+    <p class="m-footer__text">&copy; {{ year }}</p>
   </footer>
 </template>
 
@@ -24,5 +24,9 @@ export default Vue.extend({
   background-color: $color-neutral-2;
   text-align: center;
   line-height: $height-footer;
+  margin-top: $space-1;
+  &__text {
+    margin: unset;
+  }
 }
 </style>

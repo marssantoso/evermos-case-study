@@ -11,22 +11,14 @@
       </div>
     </div>
     <m-footer />
-    <a-backdrop :value="isSidebarOpen" @click.native="toggleSidebar(false)" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState, mapMutations } from 'vuex'
 
 export default Vue.extend({
   name: 'LayoutSearch',
-  computed: {
-    ...mapState(['isSidebarOpen']),
-  },
-  methods: {
-    ...mapMutations({ toggleSidebar: 'TOGGLE_SIDEBAR' }),
-  },
 })
 </script>
 
@@ -38,20 +30,30 @@ export default Vue.extend({
   &__container {
     display: flex;
     gap: $space-1;
+    @include screen-tablet {
+      padding: 0 $space-1;
+    }
     @include screen-mobile {
       flex-direction: column;
+      padding: unset;
     }
   }
   &__gallery {
     width: $width-gallery;
+    max-width: 100%;
+    flex-shrink: 0;
+    @include screen-tablet {
+      max-width: $width-sidebar;
+    }
+    @include screen-mobile {
+      width: 100vw;
+      max-width: unset;
+    }
   }
   &__content {
     width: 100%;
     height: 100%;
-    min-height: calc(100vh - $height-navbar - $height-footer - $height-breadcrumb - (4 * $space-1));
-    @include screen-desktop {
-      padding-left: $space-1;
-    }
+    min-height: calc(100vh - $height-navbar - $height-footer - $height-breadcrumb - (2 * $space-1));
   }
 }
 </style>

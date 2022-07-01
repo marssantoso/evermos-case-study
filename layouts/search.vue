@@ -40,7 +40,7 @@ export default Vue.extend({
   &__content {
     width: 100%;
     height: 100%;
-    min-height: calc(100vh - $height-navbar - $height-footer - $height-breadcrumb - (4 * $space-1));
+    min-height: calc(100vh - $height-navbar - $height-footer - $height-breadcrumb - (3 * $space-1));
     @include screen-desktop {
       padding-left: $space-1;
     }

@@ -19,13 +19,14 @@ const getProducts = (): Product[] => {
 
   const length = Math.floor(Math.random() * 499) + 20
   products = Array.from({ length }).map((_, index) => {
+    const category = faker.commerce.department()
     const name = faker.commerce.productName()
     const description = faker.commerce.productDescription()
     const slug: string = `${name.split(' ').join('-').toLowerCase()}-${index + 1}`
     const price = parseInt(faker.commerce.price(1000, 1000000, 0))
     const rating = (Math.random() * 5).toFixed(2)
     const sold = faker.mersenne.rand(200, 0)
-    const category = faker.commerce.department()
+    const stock = faker.mersenne.rand(300, 0)
     const location = province[Math.floor(Math.random() * province.length)]
     const images = slug
       .split('-')
@@ -42,6 +43,7 @@ const getProducts = (): Product[] => {
       images,
       rating,
       sold,
+      stock,
       category,
       location,
     }
